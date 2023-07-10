@@ -1,16 +1,16 @@
 There are two types of Encryptions
-    1. Assymetric Encryptions
+    1. Asymmetric Encryptions
     2. Symmetric Encryptions
 
-Assymetric Encryptions
-    In Assymetric Encryptions, Two keys are used. Public key and Private Key.
-    Server generates private and public keys and shares Public key with Client(Browser).
+Asymmetric Encryptions
+    In asymmetric Encryption, Two keys are used. Public key and Private Key.
+    The server generates private and public keys and shares the Public key with the Client(Browser).
 
-    CLient uses Public Key to enctrypt Content and sends across the network,. Server decreypts this content using its private key.
+    The client uses Public Key to encrypt Content and sends it across the network. The server decrypts this content using its private key.
 
 Symmetric Encryptions
     In Symmetric Encryptions, Only one key is used.
-    Client and server used single key o enctrypt and dectrypt data.
+    The client and server used a single key o encrypt and decrypt data.
 
 
 TLS/SSL
@@ -24,9 +24,12 @@ PRIKEY => Privite Key
     Client              <---             Server  shares PUBKEY with Client                                                     <---             Server
     Client              ----             Client Creates Single Session(SKEY) Key                                               ----             Server
     Client              --->             Client Encrypts SKEY with Servers PUBKEY and sends to Server                          --->             Server
-    Client              ----             Server Uses  PRIKRY to decrypt the SKEY which is sent by Client                       --->             Server
-    Client              ----             Server and Client communicates with shared SKEY untill it wont expire                 ----             Server
-    Client              --->             Client send data by encryptiong it with SKEY                                          --->             Server
+    Client              ----             Server Uses PRIKRY to decrypt the SKEY, which is sent by the Client                   --->             Server
+    Client              ----             Server and Client communicates with shared SKEY until it wont expire                 ----             Server
+    Client              --->             Client send data by encrypting it with SKEY                                          --->             Server
     Client              ----             Server Decrypts data by using SKEY                                                    ----             Server
     Client              <---             Server Sends data by encrypting using SKEY                                            <---             Server
     Client              ----             Client Decrypts data by using SKEY                                                    ----             Server
+
+
+
