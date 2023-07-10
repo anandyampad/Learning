@@ -76,6 +76,66 @@ ANANDK4-M-40W4:TLS anandk4$
 ```
 
 
+Create Certificate Signing Request(CSR): "openssl req -new -key mytest.key -out mytest.csr"
+```
+ANANDK4-M-40W4:TLS anandk4$ openssl req -new -key mytest.key -out mytest.csr
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) []:IN
+State or Province Name (full name) []:KA
+Locality Name (eg, city) []:Bangalore
+Organization Name (eg, company) []:AnandOrg
+Organizational Unit Name (eg, section) []:AnandOrg
+Common Name (eg, fully qualified host name) []:www.anandyampad.com
+Email Address []:anand.yampad@gmail.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+ANANDK4-M-40W4:TLS anandk4$ ls
+mytest.csr	mytest.key	mytest_pub.key
+ANANDK4-M-40W4:TLS anandk4$ 
+```
+
+For Self Signing the Certificate: "openssl x509 -in mytest.csr -out mytest.crt -req -signkey mytest.key -days 365"
+```
+ANANDK4-M-40W4:TLS anandk4$ ls
+mytest.csr	mytest.key	mytest_pub.key
+ANANDK4-M-40W4:TLS anandk4$ openssl x509 -in mytest.csr -out mytest.crt -req -signkey mytest.key -days 365
+Signature ok
+subject=/C=IN/ST=KA/L=Bangalore/O=AnandOrg/OU=AnandOrg/CN=www.anandyampad.com/emailAddress=anand.yampad@gmail.com
+Getting Private key
+ANANDK4-M-40W4:TLS anandk4$ ls
+mytest.crt	mytest.csr	mytest.key	mytest_pub.key
+ANANDK4-M-40W4:TLS anandk4$ 
+```
+
+Extracting Public Key from Certificate:"openssl x509 -in mytest.crt -pubkey -noout -out mytext1.pub"
+```
+ANANDK4-M-40W4:TLS anandk4$ openssl x509 -in mytest.crt -pubkey -noout -out mytext1.pub
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5y9XM6aRUdT9LVt2F6yX
+5z7PgBdU2AbU2w7BMJTtJdjc6h4FPjIXXSlUno7pO39n0xGXdfzPPWi+wvar5W4Y
+SqUH4Ulnf1kdeGJexb7kMNnGtAi67i1YI+ktF1cO5nAohQL8W6fLz6Fc5u/79N9s
+77gHhhDhGqYTq3UySty3IqZzPbmoeH8uWyxtD2zVgmFg4qtQhAdCt5fiYzhX3Rp5
+LdqRaW/RN2mWN4SL6cNXK8L5kcaXqoQ0cYDz9fIwBvB/z9sSKtxIYBbQb/hYraZX
+ONF98wODqtSSBKDqZfpfDOe6onqQ5dufTKBV5/UrrRFgI+eOSdN+7p5OjV9/QB2y
+nQIDAQAB
+-----END PUBLIC KEY-----
+ANANDK4-M-40W4:TLS anandk4$ ls
+mytest.crt	mytest.csr	mytest.key	mytest_pub.key
+ANANDK4-M-40W4:TLS anandk4$ 
+```
+
+
+
+
+
 
 
 
