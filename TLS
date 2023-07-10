@@ -25,11 +25,64 @@ PRIKEY => Privite Key
     Client              ----             Client Creates Single Session(SKEY) Key                                               ----             Server
     Client              --->             Client Encrypts SKEY with Servers PUBKEY and sends to Server                          --->             Server
     Client              ----             Server Uses PRIKRY to decrypt the SKEY, which is sent by the Client                   --->             Server
-    Client              ----             Server and Client communicates with shared SKEY until it wont expire                 ----             Server
-    Client              --->             Client send data by encrypting it with SKEY                                          --->             Server
+    Client              ----             Server and Client communicates with shared SKEY until it won't expire                 ----             Server
+    Client              --->             Client sends data by encrypting it with SKEY                                          --->             Server
     Client              ----             Server Decrypts data by using SKEY                                                    ----             Server
     Client              <---             Server Sends data by encrypting using SKEY                                            <---             Server
     Client              ----             Client Decrypts data by using SKEY                                                    ----             Server
+
+
+
+
+Public Key(PUBKEY) is shared as Certificate. This certificate will be signed by CA(Certificate Authority).
+The receiver will have the CA public key to validate the certificate. 
+
+
+Webserver(WS) first time adopting HTTPS:
+CA's will have their own Public Key and Private Key. For example, Goggle CA(GCA) Will have its Private and Public Key.
+WS will generate Public Key and Private Key.
+WS will create CSR(Certificate Signing Request) with their Public and Private Key. And Requests GCA to Sign this.
+
+GCA will sign this with its Private Key and Sends back to WS. This signed artifact is called a "Certificate".
+
+CA => Certificate Authority 
+Certificate => Actual Certificate Containing Servers Public Key.
+CSR => Certificate signing Request, This request will be issued to receive a certificate from CA.
+
+https://www.youtube.com/watch?v=T4Df5_cojAs
+
+Open SSL:
+
+Create Key Pair:
+Check for the version in your Working ENV: "openssl version -a"
+Generating Key Pair with RSA algorithm and 2048 Key length: "openssl genrsa -out mytesting.key 2048"
+This will give mytesting.key, And includes both public key and private key.
+
+Need to extract the public key and private key from this key pair: "openssl rsa -in mytest.key -pubout -out mytest_pub.key"
+
+```
+ANANDK4-M-40W4:TLS anandk4$ openssl genrsa -out mytest.key 2048
+Generating RSA private key, 2048 bit long modulus
+............................................................................................+++++
+...........................................+++++
+e is 65537 (0x10001)
+ANANDK4-M-40W4:TLS anandk4$ ls
+mytest.key
+ANANDK4-M-40W4:TLS anandk4$ openssl rsa -in mytest.key -pubout -out mytest_pub.key
+writing RSA key
+ANANDK4-M-40W4:TLS anandk4$ ls
+mytest.key	mytest_pub.key
+ANANDK4-M-40W4:TLS anandk4$ 
+```
+
+
+
+
+
+
+
+
+
 
 
 
