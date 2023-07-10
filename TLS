@@ -53,7 +53,7 @@ https://www.youtube.com/watch?v=T4Df5_cojAs
 
 Open SSL:
 
-Create Key Pair:
+How to Generate a Key Pair:
 Check for the version in your Working ENV: "openssl version -a"
 Generating Key Pair with RSA algorithm and 2048 Key length: "openssl genrsa -out mytesting.key 2048"
 This will give mytesting.key, And includes both public key and private key.
