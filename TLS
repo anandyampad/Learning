@@ -147,6 +147,53 @@ The Corresponding Public KEy will be given to Eventing, And stored in the S3 buc
 
 Once Eventing receives the HTTP/WS Request from the Client, It Validates the Token, By comparing it with the PUblic key Present in the S3.
 
+Sample Token will have
+HEADER:
+ALGORITHM & TOKEN TYPE
+
+{
+  "alg": "RS256",
+  "typ": "JWT"
+}
+
+PAYLOAD:DATA
+
+{
+  "iss": "SSE",
+  "sub": "Services",
+  "exp": 1689073080,
+  "iat": 1689069480,
+  "jti": "a01e8bca-63d6-4607-b55b-10467b711ca4",
+  "aud": [
+    "SSE"
+  ],
+  "id": "54f7b840-5541-4306-915f-7732ce9e6736",
+  "subscriptions": [
+    "eventing",
+    "raw-event-access",
+    "cdo-event-access",
+    "vault",
+    "ctr-incidents"
+  ],
+  "jwtType": "access",
+  "serviceName": "Eventing",
+  "version": "v2"
+}
+
+SECRET:
+RSASHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  
+Public Key in SPKI, PKCS #1, X.509 Certificate, or JWK string format.
+,
+  
+Private Key in PKCS #8, PKCS #1, or JWK string format. The key never leaves your browser.
+
+)
+
+
+
 
 
 
