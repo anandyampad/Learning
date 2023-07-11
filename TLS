@@ -133,6 +133,24 @@ ANANDK4-M-40W4:TLS anandk4$
 ```
 
 
+JWT Token:
+Issued by the authentication server, and used to authorize the user for the claimed resources.
+It will have three parts
+Header
+Body
+Signature
+
+In SSE:
+SSE Core issues the JWT Token(access token) to the client application after it's validated with the Client Id and Client Secret.
+The JWT Token will be signed by the Private Key of the SSE.
+The Corresponding Public KEy will be given to Eventing, And stored in the S3 bucket.
+
+Once Eventing receives the HTTP/WS Request from the Client, It Validates the Token, By comparing it with the PUblic key Present in the S3.
+
+
+
+
+
 
 
 
